@@ -1,0 +1,3 @@
+firstName,lastName,email,dateOfBirth,phoneNumber,address
+John,Doe,john.doe@example.com,1980-01-01,1234567890,123 Main St
+Jane,Doe,jane.doe@example.com,1985-02-02,0987654321,456 Elm St

@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: daniel
+      comments: "Install UUID extension and update users table to use UUID and TEXT types"
+      changes:
+        - sql:
+            sql: CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+        - createTable:
+            schemaName: user_management
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: uuid_generate_v4()
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: text
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: date_of_birth
+                  type: date
+              - column:
+                  name: phone_number
+                  type: text
+              - column:
+                  name: address
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            schemaName: user_management
+            indexName: idx_users_email
+            tableName: users
+            columns:
+              - column:
+                  name: email

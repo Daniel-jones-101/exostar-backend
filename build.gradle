@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.exostar'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
+    // Spring Boot Starter Web for RESTful APIs
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Boot Starter Data JPA for database operations
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // H2 Database for development and testing
+    runtimeOnly 'com.h2database:h2'
+
+    // Apache Commons CSV for CSV file processing
+    implementation 'org.apache.commons:commons-csv:1.9.0'
+
+    // Lombok for reducing boilerplate code
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Spring Boot Starter Validation for input validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Spring Boot Starter Test for unit and integration testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // JUnit 5 for unit testing
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+
+    // Mockito for mocking in tests
+    testImplementation 'org.mockito:mockito-core:5.3.1'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.3.1'
+
+    // AssertJ for fluent assertions in tests
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+
+    // PostgresSQL driver
+    implementation 'org.postgresql:postgresql'
+
+    // Liquibase
+    implementation 'org.liquibase:liquibase-core'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
